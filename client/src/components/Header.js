@@ -1,8 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import Materialize from "materialize-css/dist/js/materialize.min.js";
 
 class Header extends Component {
+  componentDidMount() {
+    Materialize.Sidenav.init(document.querySelector(".sidenav"), {
+      edge: "left",
+      inDuration: 250
+    });
+  }
+
   renderContent() {
     switch (this.props.auth) {
       case null:
@@ -31,9 +39,19 @@ class Header extends Component {
           >
             iFeedback
           </Link>
-          <ul id="nav-mobile" className="right hide-on-med-and-down">
+          <ul id="navList" className="right hide-on-med-and-down">
             {this.renderContent()}
           </ul>
+          <ul id="nav-mobile" className="sidenav">
+            {this.renderContent()}
+          </ul>
+          <a
+            href="#"
+            data-target="nav-mobile"
+            className=" right sidenav-trigger show-on-med-and-down"
+          >
+            <i className="material-icons">menu</i>
+          </a>
         </div>
       </nav>
     );

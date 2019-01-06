@@ -16,16 +16,16 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
-        <BrowserRouter>
-          <React.Fragment>
-            <Route component={Header} />
+      <BrowserRouter>
+        <React.Fragment>
+          <Route component={Header} />
+          <React.Fragment className="container">
             <Route path="/" component={Landing} exact />
             <Route path="/surveys" component={Dashboard} />
             <Route path="/dashboard" component={SurveyNew} exact={true} />
           </React.Fragment>
-        </BrowserRouter>
-      </div>
+        </React.Fragment>
+      </BrowserRouter>
     );
   }
 }

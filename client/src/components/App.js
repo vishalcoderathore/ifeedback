@@ -19,11 +19,11 @@ class App extends Component {
       <BrowserRouter>
         <React.Fragment>
           <Route component={Header} />
-          <React.Fragment className="container">
+          <div className="container">
             <Route path="/" component={Landing} exact />
             <Route path="/surveys" component={Dashboard} />
             <Route path="/dashboard" component={SurveyNew} exact={true} />
-          </React.Fragment>
+          </div>
         </React.Fragment>
       </BrowserRouter>
     );

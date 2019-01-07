@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Materialize from "materialize-css/dist/js/materialize.min.js";
 
+import Payments from "./Payments";
+
 class Header extends Component {
   componentDidMount() {
     Materialize.Sidenav.init(document.querySelector(".sidenav"), {
@@ -23,9 +25,14 @@ class Header extends Component {
         );
       default:
         return (
-          <li>
-            <a href="/api/logout">Logout</a>
-          </li>
+          <React.Fragment>
+            <li key="1">
+              <Payments />
+            </li>
+            <li key="2">
+              <a href="/api/logout">Logout</a>
+            </li>
+          </React.Fragment>
         );
     }
   }

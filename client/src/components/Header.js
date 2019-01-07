@@ -26,11 +26,23 @@ class Header extends Component {
       default:
         return (
           <React.Fragment>
-            <li key="1">
+            <li>
               <Payments />
             </li>
-            <li key="2">
-              <a href="/api/logout">Logout</a>
+            <li style={{ margin: "0 0 0 10px", color: "#fff" }}>
+              Credits : {this.props.auth.credits}
+            </li>
+            <li>
+              <a
+                href="/api/logout"
+                style={{
+                  color: "#fff",
+                  padding: "0 15px",
+                  fontWeight: "normal"
+                }}
+              >
+                Logout
+              </a>
             </li>
           </React.Fragment>
         );
@@ -38,8 +50,8 @@ class Header extends Component {
   }
   render() {
     return (
-      <nav>
-        <div className="nav-wrapper teal">
+      <nav className="teal">
+        <div className="nav-wrapper container teal">
           <Link
             to={this.props.auth ? "/surveys" : "/"}
             className="left brand-logo"
@@ -49,7 +61,7 @@ class Header extends Component {
           <ul id="navList" className="right hide-on-med-and-down">
             {this.renderContent()}
           </ul>
-          <ul id="nav-mobile" className="sidenav">
+          <ul id="nav-mobile" className="sidenav grey darken-4">
             {this.renderContent()}
           </ul>
           <a

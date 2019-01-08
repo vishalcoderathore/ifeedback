@@ -18,11 +18,11 @@ class App extends Component {
     return (
       <BrowserRouter>
         <React.Fragment>
-          <Route component={Header} />
+          <Header />
           <div className="container">
             <Route path="/" component={Landing} exact />
-            <Route path="/surveys" component={Dashboard} />
-            <Route path="/dashboard" component={SurveyNew} exact={true} />
+            <Route path="/surveys" component={Dashboard} exact />
+            <Route path="/surveys/new" component={SurveyNew} exact={true} />
           </div>
         </React.Fragment>
       </BrowserRouter>

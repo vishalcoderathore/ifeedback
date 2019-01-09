@@ -5,9 +5,11 @@ const cookieSession = require("cookie-session");
 const passport = require("passport");
 const bodyParser = require("body-parser");
 require("./models/User");
+require("./models/Survey");
 require("./services/passport");
 const authRoutes = require("./routes/authRoutes");
 const billingRouts = require("./routes/billingRoutes");
+const surveyRoutes = require("./routes/surveyRoutes");
 
 // Connect to Mongose Database
 mongoose.connect(
@@ -16,6 +18,9 @@ mongoose.connect(
     useNewUrlParser: true;
   }
 );
+
+//Mongoose Logs
+mongoose.set("debug", true);
 
 // Express Server
 const app = express();
@@ -40,6 +45,7 @@ app.use(passport.session());
 // Include routing paths
 authRoutes(app);
 billingRouts(app);
+surveyRoutes(app);
 
 if (process.env.NODE_ENV === "production") {
   // Express serve production assets (main.js or main.css)

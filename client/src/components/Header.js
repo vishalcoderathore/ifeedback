@@ -99,6 +99,7 @@ class Header extends Component {
             to={this.props.auth ? "/surveys" : "/"}
             className="left brand-logo"
           >
+            <img src="/logo_60x60.png" className="responsive-img left" />
             iFeedback
           </Link>
           <ul id="signIn" className="sidenav grey darken-4">

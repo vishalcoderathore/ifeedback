@@ -22,19 +22,20 @@ class Header extends Component {
     if (this.props.auth !== null && this.props.auth !== false) {
       return (
         <React.Fragment>
-          <li style={{ margin: "0 10px", color: "#fff" }}>
+          <li style={{ margin: "0 0px", padding: "0 15px", color: "#fff" }}>
             Credits : {this.props.auth.credits}
           </li>
           <li>
             <Payments />
           </li>
           <li>
-            <a
-              href="/api/logout"
-              className="btn waves-effect waves-light"
-              style={{ backgroundColor: "#dd4b39", color: "#fff" }}
-            >
-              Logout
+            <a href="/api/logout" style={{ padding: "0 15px" }}>
+              <button
+                className="btn waves-effect waves-light "
+                style={{ backgroundColor: "#dd4b39", color: "#fff" }}
+              >
+                Logout
+              </button>
             </a>
           </li>
         </React.Fragment>

@@ -35,10 +35,10 @@ class SurveyForm extends Component {
             className="btn-flat left white-text"
             style={{ backgroundColor: "#dd4b39" }}
           >
-            Cancel
+            Cancel <i className="material-icons left">clear</i>
           </Link>
           <button type="submit" className="teal btn-flat right white-text">
-            Next <i className="material-icons right">done</i>
+            Next <i className="material-icons right">arrow_right</i>
           </button>
         </form>
       </div>

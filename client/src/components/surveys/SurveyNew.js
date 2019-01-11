@@ -33,5 +33,7 @@ class SurveyNew extends Component {
 
 /*
  * When SurveyNew gets unmounted (i.e. navigating away from survey), dump all the values present in 'surveyForm'
+ *
+ * withRouter() is a function provided by react-router-dom library used to teach an arbitary component in the application about react router and how * to navigate around
  */
 export default withRouter(reduxForm({ form: "surveyForm" })(SurveyNew));

@@ -1,3 +1,6 @@
+const _ = require("lodash");
+const Path = require("path-parser").default;
+const { URL } = require("url");
 const mongoose = require("mongoose");
 const requireLogin = require("../middlewares/requireLogin");
 const requireCredits = require("../middlewares/requireCredits");
@@ -45,5 +48,32 @@ module.exports = app => {
     } catch (err) {
       res.status(422).send({ err });
     }
+  });
+
+  app.post("/api/surveys/webhooks", (req, res) => {
+    /*
+     * Extract the path from the URL
+     * Example: http://localhost:3000/api/surveys/597125awedf/yes => we need /api/surveys/597125awedf/yes
+     */
+    const p = new Path("/api/surveys/:surveyId/:choice");
+    const events = _.map(req.body, event => {
+      const pathname = new URL(event.url).pathname;
+      const match = p.test(pathname);
+      if (match) {
+        return {
+          email: event.email,
+          surveyId: match.surveyId,
+          choice: match.choice
+        };
+      }
+    });
+    // Remove undefined events
+    const compactEvents = _.compact(events);
+
+    //Remove duplicate events
+    const uniqueEvents = _.uniqBy(compactEvents, "email", "surveyId");
+
+    console.log(uniqueEvents);
+    res.send({});
   });
 };

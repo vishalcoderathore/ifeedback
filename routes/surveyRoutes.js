@@ -13,7 +13,7 @@ module.exports = app => {
   /*
    * Route customers to a thanking page after they click a yes/no
    */
-  app.get("/feedback/surveys", (req, res) => {
+  app.get("/api/surveys/:surveyId/:choice", (req, res) => {
     res.send("Thank You for your feedback.");
   });
 
@@ -74,6 +74,24 @@ module.exports = app => {
     const uniqueEvents = _.uniqBy(compactEvents, "email", "surveyId");
 
     console.log(uniqueEvents);
+    uniqueEvents.forEach(({ surveyId, email, choice }) => {
+      Survey.updateOne(
+        {
+          _id: surveyId,
+          recipients: {
+            $elemMatch: {
+              email: email,
+              responded: false
+            }
+          }
+        },
+        {
+          $inc: { [choice]: 1 },
+          $set: { "recipients.$.responded": true },
+          lastResponded: new Date()
+        }
+      ).exec();
+    });
     res.send({});
   });
 };

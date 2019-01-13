@@ -10,6 +10,14 @@ const surveyTemplate = require("../services/emailTemplates/surveyTemplate");
 const Survey = mongoose.model("surveys");
 
 module.exports = app => {
+  // Get a list of surveys of the current user
+  app.get("/api/surveys", requireLogin, async (req, res) => {
+    const surveys = await Survey.find({ _user: req.user.id }).select({
+      recipients: false
+    });
+    res.send(surveys);
+  });
+
   /*
    * Route customers to a thanking page after they click a yes/no
    */
@@ -50,6 +58,7 @@ module.exports = app => {
     }
   });
 
+  //Called by SendGrid to update our app when a end customer clicks yes/no in the survey
   app.post("/api/surveys/webhooks", (req, res) => {
     /*
      * Extract the path from the URL
@@ -73,7 +82,7 @@ module.exports = app => {
     //Remove duplicate events
     const uniqueEvents = _.uniqBy(compactEvents, "email", "surveyId");
 
-    console.log(uniqueEvents);
+    // Persist updates in Mongo DB
     uniqueEvents.forEach(({ surveyId, email, choice }) => {
       Survey.updateOne(
         {

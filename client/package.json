@@ -8,6 +8,7 @@
     "lodash": "^4.17.11",
     "materialize-css": "^1.0.0-rc.2",
     "materialize-social": "^1.0.3",
+    "node-sass": "^4.11.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",

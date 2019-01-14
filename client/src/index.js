@@ -1,5 +1,6 @@
 import "materialize-css/dist/css/materialize.min.css";
 import "materialize-social/materialize-social.css";
+import "./styles/app.scss";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";

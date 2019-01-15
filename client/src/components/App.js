@@ -3,7 +3,8 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 
-import Header from "./Header";
+import Header from "./HeaderBackup";
+import HeaderFullScreeen from "./HeaderFullScreeen";
 import Landing from "./Landing";
 import Dashboard from "./Dashboard";
 import SurveyNew from "./surveys/SurveyNew";
@@ -13,11 +14,18 @@ class App extends Component {
     this.props.fetchUser();
   }
 
+  renderHeader() {
+    if (this.props.auth) {
+      return <Header />;
+    }
+    return <HeaderFullScreeen />;
+  }
+
   render() {
     return (
       <BrowserRouter>
         <React.Fragment>
-          <Header />
+          {this.renderHeader()}
           <div className="container">
             <Route path="/" component={Landing} exact />
             <Route path="/surveys" component={Dashboard} exact />
@@ -29,7 +37,13 @@ class App extends Component {
   }
 }
 
+function mapStateToProps({ auth }) {
+  return {
+    auth
+  };
+}
+
 export default connect(
-  null,
+  mapStateToProps,
   actions
 )(App);

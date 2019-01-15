@@ -94,88 +94,48 @@ class Header extends Component {
 
   render() {
     return (
-      <header class="main-header">
-        <div class="primary-overlay">
-          <div class="navbar-fixed">
-            <nav class="transparent">
-              <div class="container">
-                <div class="nav-wrapper">
-                  <a href="#home" class="brand-logo">
-                    iFeedback
-                  </a>
-                  <a
-                    href="#"
-                    data-activates="mobile-nav"
-                    class="button-collapse"
-                  >
-                    <i class="material-icons">menu</i>
-                  </a>
-                  <ul class="right hide-on-med-and-down">
-                    <li>
-                      <a href="#home">Home</a>
-                    </li>
-                    <li>
-                      <a href="#about">About</a>
-                    </li>
-                    <li>
-                      <a href="#testimonials">Testimonials</a>
-                    </li>
-                    <li>
-                      <a href="#contact">Contact</a>
-                    </li>
-                    <li>
-                      <a href="#" class="btn blue">
-                        Download
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </nav>
-          </div>
-
-          <ul class="side-nav" id="mobile-nav">
-            <h4 class="blue-grey darken-3 center">BizLand</h4>
-            <li>
-              <a class="divider" />
-            </li>
-            <li>
-              <a href="#home">Home</a>
-            </li>
-            <li>
-              <a href="#about">About</a>
-            </li>
-            <li>
-              <a href="#testimonials">Testimonials</a>
-            </li>
-            <li>
-              <a href="#contact">Contact</a>
-            </li>
+      <nav className="blue-grey darken-4">
+        <div className="nav-wrapper container">
+          <Link
+            to={this.props.auth ? "/surveys" : "/"}
+            className="left brand-logo"
+          >
+            <img
+              src="/logo_60x60.png"
+              alt="logo"
+              className="responsive-img left"
+            />
+            iFeedback
+          </Link>
+          <ul id="signIn" className="sidenav grey darken-4">
+            {this.renderSignIn()}
           </ul>
-
-          <div class="showcase container">
-            <div class="row">
-              <div class="col s12 main-text">
-                <h5>You found the...</h5>
-                <h1>Right Place To Start</h1>
-                <p class="flow-text">
-                  To take your business to the next level with our services that
-                  have taken companies to the fortune 500
-                </p>
-                <br />
-                <a href="#about" class="btn btn-large white black-text">
-                  Learn More
-                </a>
-                <a href="#contact" class="white-text">
-                  <i class="material-icons medium scroll-icon">
-                    arrow_drop_down_circle
-                  </i>
-                </a>
-              </div>
-            </div>
-          </div>
+          {!this.props.auth ? (
+            <a
+              href="#"
+              data-target="signIn"
+              className="waves-effect waves-light right sidenav-trigger show-on-large social"
+            >
+              Sign In
+              <i className="material-icons left">account_circle</i>
+            </a>
+          ) : (
+            <a
+              href="#"
+              data-target="navListOnSidenav"
+              className="right sidenav-trigger show-on-med-and-down"
+            >
+              <i className="material-icons">menu</i>
+            </a>
+          )}
+          <ul id="navList" className="right hide-on-med-and-down">
+            {this.renderContent()}
+          </ul>
+          <ul id="navListOnSidenav" className="sidenav grey darken-4">
+            {this.renderContent()}
+          </ul>
         </div>
-      </header>
+      </nav>
     );
   }
 }

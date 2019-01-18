@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import Materialize from "materialize-css/dist/js/materialize.min.js";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import Materialize from 'materialize-css/dist/js/materialize.min.js';
 
-import Payments from "./Payments";
+import Payments from './Payments';
 
 class Header extends Component {
   componentDidMount() {
-    Materialize.Sidenav.init(document.querySelector("#signIn"), {
-      edge: "left",
+    Materialize.Sidenav.init(document.querySelector('#signIn'), {
+      edge: 'left',
       inDuration: 250
     });
-    Materialize.Sidenav.init(document.querySelector("#navListOnSidenav"), {
-      edge: "left",
+    Materialize.Sidenav.init(document.querySelector('#navListOnSidenav'), {
+      edge: 'left',
       inDuration: 250
     });
   }
@@ -22,18 +22,17 @@ class Header extends Component {
     if (this.props.auth !== null && this.props.auth !== false) {
       return (
         <React.Fragment>
-          <li style={{ margin: "0 0px", padding: "0 15px", color: "#fff" }}>
+          <li style={{ margin: '0 0px', padding: '0 15px', color: '#fff' }}>
             Credits : {this.props.auth.credits}
           </li>
           <li>
             <Payments />
           </li>
           <li>
-            <a href="/api/logout" style={{ padding: "0 15px" }}>
+            <a href="/api/logout" style={{ padding: '0 15px' }}>
               <button
                 className="btn waves-effect waves-light "
-                style={{ backgroundColor: "#dd4b39", color: "#fff" }}
-              >
+                style={{ backgroundColor: '#dd4b39', color: '#fff' }}>
                 Logout
               </button>
             </a>
@@ -52,8 +51,7 @@ class Header extends Component {
           <li>
             <a
               className="waves-effect waves-light btn social google"
-              href="/auth/google"
-            >
+              href="/auth/google">
               <i className="fa fa-google left" /> Sign in with google
             </a>
           </li>
@@ -63,11 +61,10 @@ class Header extends Component {
               id="facebook-link"
               onClick={() =>
                 alert(
-                  "Facebook Login is under construction. Log in using Google."
+                  'Facebook Login is under construction. Log in using Google.'
                 )
               }
-              href="#"
-            >
+              href="#">
               <i className="fa fa-facebook left" /> Sign in with facebook
             </a>
           </li>
@@ -77,11 +74,10 @@ class Header extends Component {
               id="facebook-link"
               onClick={() =>
                 alert(
-                  "GitHub Login is under construction. Log in using Google."
+                  'GitHub Login is under construction. Log in using Google.'
                 )
               }
-              href="#"
-            >
+              href="#">
               <i className="fa fa-github left" /> Sign in with github
             </a>
           </li>
@@ -106,8 +102,7 @@ class Header extends Component {
                   <a
                     href="#"
                     data-activates="mobile-nav"
-                    class="button-collapse"
-                  >
+                    class="button-collapse">
                     <i class="material-icons">menu</i>
                   </a>
                   <ul class="right hide-on-med-and-down">

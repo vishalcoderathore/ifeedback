@@ -64,3 +64,18 @@
     height: 50vh;
   }
 }
+
+.show-in {
+  // margin-top: 25px;
+  // font-size: 21px;
+  // text-align: center;
+  animation: fadeAndScale 0.75s ease-in;
+}
+@keyframes fadeAndScale {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
-import Header from './HeaderBackup';
+import Header from './HeaderLoggedIn';
 import HeaderFullScreeen from './HeaderFullScreeen';
 import Landing from './Landing';
 import Dashboard from './Dashboard';
@@ -27,9 +27,9 @@ class App extends Component {
         <React.Fragment>
           {this.renderHeader()}
 
-          <Route path="/" component={Landing} exact />
-          <Route path="/surveys" component={Dashboard} exact />
-          <Route path="/surveys/new" component={SurveyNew} exact={true} />
+          <Route path='/' component={Landing} exact />
+          <Route path='/dashboard' component={Dashboard} exact />
+          <Route path='/surveys/new' component={SurveyNew} exact={true} />
         </React.Fragment>
       </BrowserRouter>
     );

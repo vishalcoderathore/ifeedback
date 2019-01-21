@@ -19,13 +19,13 @@ class HeaderLoggedIn extends React.Component {
     return (
       <React.Fragment>
         <li>
-          <a href='#root'>Dashboard</a>
+          <Link to='/dashboard'>Dashboard</Link>
         </li>
         <li>
           <a href='#'>Credits</a>
         </li>
         <li>
-          <a href='#contact'>Surveys</a>
+          <Link to='/surveys'>Surveys</Link>
         </li>
         <li>
           <a href='/api/logout'>Logout</a>

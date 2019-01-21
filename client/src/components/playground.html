@@ -1,0 +1,8 @@
+return this.props.surveys .reverse() .map(({ _id, title, body, dateSent,
+dateResponded, yes, no }) => { return (
+<tr>
+  <td>{title}</td>
+  <td>{dateSent}</td>
+  <td><a href="details.html" className="btn blue lighten-2">Details</a></td>
+</tr>
+); });

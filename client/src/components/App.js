@@ -9,6 +9,8 @@ import Landing from './Landing';
 import Dashboard from './Dashboard';
 import SurveyNew from './surveys/SurveyNew';
 
+import Surveys from './surveys/SurveyList';
+
 class App extends Component {
   componentDidMount() {
     this.props.fetchUser();
@@ -29,6 +31,7 @@ class App extends Component {
 
           <Route path='/' component={Landing} exact />
           <Route path='/dashboard' component={Dashboard} exact />
+          <Route path='/surveys' component={Surveys} exact />
           <Route path='/surveys/new' component={SurveyNew} exact={true} />
         </React.Fragment>
       </BrowserRouter>

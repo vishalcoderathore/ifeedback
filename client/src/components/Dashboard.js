@@ -6,10 +6,6 @@ import { fetchSurveys } from '../actions';
 import Footer from './Footer';
 
 class Dashboard extends React.Component {
-  componentDidMount() {
-    this.props.fetchSurveys();
-  }
-
   renderSurveys() {
     let recentPosts = [];
     let surveyProps = this.props.surveys.reverse();
@@ -82,9 +78,7 @@ class Dashboard extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <section
-          id='about'
-          className='section section-about grey lighten-5 center scrollspy'>
+        <section className='section section-about grey lighten-5 center scrollspy'>
           <div className='container'>
             <h4>Welcome to iFeedback</h4>
             <p>
@@ -179,7 +173,4 @@ function mapStateToProps({ surveys }) {
   };
 }
 
-export default connect(
-  mapStateToProps,
-  { fetchSurveys }
-)(Dashboard);
+export default connect(mapStateToProps)(Dashboard);

@@ -13,7 +13,11 @@ import Surveys from './surveys/SurveyList';
 
 class App extends Component {
   componentDidMount() {
-    this.props.fetchUser();
+    this.props.fetchUser().then(() => {
+      if (this.props.auth) {
+        this.props.fetchSurveys();
+      }
+    });
   }
 
   renderHeader() {
@@ -39,9 +43,10 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ auth }) {
+function mapStateToProps({ auth, surveys }) {
   return {
-    auth
+    auth,
+    surveys
   };
 }
 

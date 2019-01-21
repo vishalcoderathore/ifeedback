@@ -9,7 +9,9 @@ import Landing from './Landing';
 import Dashboard from './Dashboard';
 import SurveyNew from './surveys/SurveyNew';
 
-import Surveys from './surveys/SurveyList';
+import Surveys from './surveys/Surveys';
+import ActionButton from './ActionButton';
+import Footer from './Footer';
 
 class App extends Component {
   componentDidMount() {
@@ -32,11 +34,14 @@ class App extends Component {
       <BrowserRouter>
         <React.Fragment>
           {this.renderHeader()}
-
-          <Route path='/' component={Landing} exact />
-          <Route path='/dashboard' component={Dashboard} exact />
-          <Route path='/surveys' component={Surveys} exact />
-          <Route path='/surveys/new' component={SurveyNew} exact={true} />
+          <main>
+            <Route path='/' component={Landing} exact />
+            <Route path='/dashboard' component={Dashboard} exact />
+            <Route path='/surveys' component={Surveys} exact />
+            <Route path='/surveys/new' component={SurveyNew} exact={true} />
+            <ActionButton />
+          </main>
+          <Footer />
         </React.Fragment>
       </BrowserRouter>
     );

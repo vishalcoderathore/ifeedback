@@ -1,5 +1,4 @@
 import React from 'react';
-import Footer from './Footer';
 
 const Landing = () => {
   return (
@@ -159,7 +158,6 @@ const Landing = () => {
           </div>
         </div>
       </section>
-      <Footer />
     </React.Fragment>
   );
 };

@@ -1,9 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SurveyList from './surveys/SurveyList';
 import { connect } from 'react-redux';
-import { fetchSurveys } from '../actions';
-import Footer from './Footer';
 
 class Dashboard extends React.Component {
   renderSurveys() {
@@ -153,15 +150,6 @@ class Dashboard extends React.Component {
             </div>
           </div>
         </section>
-
-        <div className='fixed-action-btn'>
-          <Link
-            to='/surveys/new'
-            className='btn-floating btn-large deep-orange accent-4'>
-            <i className='large material-icons'>add</i>
-          </Link>
-        </div>
-        <Footer />
       </React.Fragment>
     );
   }

@@ -6,7 +6,8 @@ class HeaderLoggedIn extends React.Component {
   componentDidMount() {
     Materialize.Sidenav.init(document.querySelector('#mobile-nav-loggedIn'), {
       edge: 'left',
-      inDuration: 250
+      inDuration: 250,
+      outDuration: 250
     });
 
     // Materialize.ScrollSpy.init(document.querySelectorAll('.scrollspy'), {
@@ -52,13 +53,19 @@ class HeaderLoggedIn extends React.Component {
           </div>
         </li>
         <li>
-          <a href='#root'>Dashboard</a>
+          <Link to='/dashboard' className='sidenav-close'>
+            Dashboard
+          </Link>
         </li>
         <li>
-          <a href='#about'>Credits</a>
+          <a href='#about' className='sidenav-close'>
+            Credits
+          </a>
         </li>
         <li>
-          <a href='#contact'>Surveys</a>
+          <Link to='/surveys' className='sidenav-close'>
+            Surveys
+          </Link>
         </li>
         <li>
           <div className='divider' />

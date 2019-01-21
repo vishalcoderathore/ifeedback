@@ -60,13 +60,19 @@ class HeaderFullScreen extends Component {
           </div>
         </li>
         <li>
-          <a href='#root'>Home</a>
+          <a href='#root' className='sidenav-close'>
+            Home
+          </a>
         </li>
         <li>
-          <a href='#about'>About</a>
+          <a href='#about' className='sidenav-close'>
+            About
+          </a>
         </li>
         <li>
-          <a href='#contact'>Contact</a>
+          <a href='#contact' className='sidenav-close'>
+            Contact
+          </a>
         </li>
         <li>
           <div className='divider' />

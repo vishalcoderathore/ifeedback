@@ -9,10 +9,6 @@ class HeaderLoggedIn extends React.Component {
       inDuration: 250,
       outDuration: 250
     });
-
-    // Materialize.ScrollSpy.init(document.querySelectorAll('.scrollspy'), {
-    //   scrollOffset: 0
-    // });
   }
 
   // Render Navigation Links on Main Navbar
@@ -23,7 +19,7 @@ class HeaderLoggedIn extends React.Component {
           <Link to='/dashboard'>Dashboard</Link>
         </li>
         <li>
-          <a href='#'>Credits</a>
+          <Link to='/credits'>Credits</Link>
         </li>
         <li>
           <Link to='/surveys'>Surveys</Link>
@@ -58,7 +54,7 @@ class HeaderLoggedIn extends React.Component {
           </Link>
         </li>
         <li>
-          <a href='#about' className='sidenav-close'>
+          <a href='/credits' className='sidenav-close'>
             Credits
           </a>
         </li>

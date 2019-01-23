@@ -48,13 +48,14 @@ class Surveys extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <section
-          id='about'
-          className='section section-about grey lighten-5 center scrollspy'>
+        <section className='section section-about grey lighten-5 center scrollspy'>
           <div className='container'>
             <h4>Surveys</h4>
             <p>
-              iFeedback allows you to create new and track all your Surveys.
+              Create and Track all your Surveys here.
+              <br />
+              To create a new Survey, click on the red + icon on the bottom
+              right of your screen.
             </p>
           </div>
         </section>

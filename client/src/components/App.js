@@ -12,6 +12,7 @@ import SurveyNew from './surveys/SurveyNew';
 import Surveys from './surveys/Surveys';
 import ActionButton from './ActionButton';
 import Footer from './Footer';
+import Credits from './Credits';
 
 class App extends Component {
   componentDidMount() {
@@ -29,6 +30,10 @@ class App extends Component {
     return <HeaderFullScreeen />;
   }
 
+  renderActionButton() {
+    if (this.props.auth) return <ActionButton />;
+  }
+
   render() {
     return (
       <BrowserRouter>
@@ -38,8 +43,9 @@ class App extends Component {
             <Route path='/' component={Landing} exact />
             <Route path='/dashboard' component={Dashboard} exact />
             <Route path='/surveys' component={Surveys} exact />
+            <Route path='/credits' component={Credits} exact />
             <Route path='/surveys/new' component={SurveyNew} exact={true} />
-            <ActionButton />
+            {this.renderActionButton()}
           </main>
           <Footer />
         </React.Fragment>

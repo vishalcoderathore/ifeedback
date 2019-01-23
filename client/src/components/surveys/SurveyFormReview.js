@@ -1,42 +1,39 @@
 /*
  * SurveyFormReview shows users their form inputs for review
  */
-import _ from "lodash";
-import React from "react";
-import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import formFields from "./formFields";
-import * as actions from "../../actions";
+import _ from 'lodash';
+import React from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import formFields from './formFields';
+import * as actions from '../../actions';
 
 const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
   const reviewFields = _.map(formFields, ({ name, label }) => {
     return (
-      <div key={name}>
+      <li key={name}>
         <label>{label}</label>
-        <div>{formValues[name]}</div>
-      </div>
+        <blockquote>{formValues[name]}</blockquote>
+      </li>
     );
   });
 
   return (
     <div>
-      <h5>Please confirm your entries</h5>
-      {reviewFields}
+      <ul>{reviewFields}</ul>
       <button
-        className="yellow darken-4 btn-flat white-text"
-        onClick={onCancel}
-      >
-        Back <i className="material-icons left">arrow_left</i>
+        className='yellow darken-4 btn-flat white-text'
+        onClick={onCancel}>
+        Back <i className='material-icons left'>arrow_left</i>
       </button>
       <button
-        type="submit"
-        className="teal btn-flat right white-text"
+        type='submit'
+        className='teal btn-flat right white-text'
         onClick={e => {
           e.target.disabled = true;
           submitSurvey(formValues, history);
-        }}
-      >
-        Send Survey <i className="material-icons right">email</i>
+        }}>
+        Send Survey <i className='material-icons right'>email</i>
       </button>
     </div>
   );

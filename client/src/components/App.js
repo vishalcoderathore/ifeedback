@@ -26,12 +26,21 @@ class App extends Component {
   renderHeader() {
     if (this.props.auth) {
       return <Header />;
+    } else if (this.props.auth === false) {
+      return <HeaderFullScreeen />;
     }
-    return <HeaderFullScreeen />;
+    return;
+  }
+
+  renderFooter() {
+    if (this.props.auth === false) {
+      return <Footer />;
+    }
+    return;
   }
 
   renderActionButton() {
-    if (this.props.auth) return <ActionButton />;
+    if (this.props.auth === true) return <ActionButton />;
   }
 
   render() {
@@ -47,7 +56,7 @@ class App extends Component {
             <Route path='/surveys/new' component={SurveyNew} exact={true} />
             {this.renderActionButton()}
           </main>
-          <Footer />
+          {this.renderFooter()}
         </React.Fragment>
       </BrowserRouter>
     );

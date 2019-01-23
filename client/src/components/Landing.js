@@ -132,7 +132,8 @@ const Landing = () => {
                     <a
                       href='https://portfolio.vishalrathore.info'
                       target='_blank'
-                      className='white-text'>
+                      className='white-text'
+                      rel='noopener noreferrer'>
                       <i className='fa fa-address-card' /> Portfolio
                     </a>
                   </li>
@@ -140,7 +141,8 @@ const Landing = () => {
                     <a
                       href='https://github.com/vishalcoderathore'
                       target='_blank'
-                      className='white-text'>
+                      className='white-text'
+                      rel='noopener noreferrer'>
                       <i className='fa fa-github-square' /> Github
                     </a>
                   </li>
@@ -148,7 +150,8 @@ const Landing = () => {
                     <a
                       href='https://facebook.com/Vishal.sam17491'
                       target='_blank'
-                      className='white-text'>
+                      className='white-text'
+                      rel='noopener noreferrer'>
                       <i className='fa fa-facebook-square' /> Facebook
                     </a>
                   </li>

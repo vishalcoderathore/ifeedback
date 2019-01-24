@@ -3,6 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
+import HeaderLayout from './HeaderLayout';
 import Header from './HeaderLoggedIn';
 import HeaderFullScreeen from './HeaderFullScreeen';
 import Landing from './Landing';
@@ -18,19 +19,9 @@ class App extends Component {
   componentDidMount() {
     this.props.fetchUser().then(() => {
       if (this.props.auth) {
-        console.log('auth verified in App.js');
         this.props.fetchSurveys();
       }
     });
-  }
-
-  renderHeader() {
-    if (this.props.auth) {
-      return <Header />;
-    } else if (this.props.auth === false) {
-      return <HeaderFullScreeen />;
-    }
-    return;
   }
 
   renderFooter() {
@@ -48,15 +39,13 @@ class App extends Component {
     return (
       <BrowserRouter>
         <React.Fragment>
-          {this.renderHeader()}
-          <main>
-            <Route path='/' component={Landing} exact />
-            <Route path='/dashboard' component={Dashboard} exact />
-            <Route path='/surveys' component={Surveys} exact />
-            <Route path='/credits' component={Credits} exact />
-            <Route path='/surveys/new' component={SurveyNew} exact={true} />
-            {this.renderActionButton()}
-          </main>
+          <HeaderLayout auth={this.props.auth} />
+          <Route path='/' component={Landing} exact />
+          <Route path='/dashboard' component={Dashboard} exact />
+          <Route path='/surveys' component={Surveys} exact />
+          <Route path='/credits' component={Credits} exact />
+          <Route path='/surveys/new' component={SurveyNew} exact={true} />
+          {this.renderActionButton()}
           {this.renderFooter()}
         </React.Fragment>
       </BrowserRouter>

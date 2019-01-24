@@ -24,7 +24,7 @@ const SurveyList = ({ surveys, onDetailsClick }) => {
     } else {
       return (
         <tr>
-          <td>No Surveys available</td>
+          <td>No Surveys Available</td>
           <td />
           <td />
         </tr>

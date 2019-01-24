@@ -44,7 +44,7 @@ function showError(error, history) {
     // that falls out of the range of 2xx
     if (error.response.status === 403) {
       alert(`Error: ${error.response.data.error}.`);
-      history.push('/');
+      history.push('/dashboard');
     }
   } else if (error.request) {
     // The request was made but no response was received

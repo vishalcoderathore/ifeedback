@@ -69,15 +69,15 @@ const SurveyDetail = ({ onReturnClick, currentSurvey, currentUser }) => {
                       <div className='row'>
                         <div className='col s12'>
                           <label>Survey Title</label>
-                          <p>{currentSurvey.title}</p>
+                          <blockquote>{currentSurvey.title}</blockquote>
                         </div>
                         <div className='col s12 pt-2'>
                           <label>Survey Subject</label>
-                          <p>{currentSurvey.subject}</p>
+                          <blockquote>{currentSurvey.subject}</blockquote>
                         </div>
                         <div className='col s12'>
                           <label>Survey Body</label>
-                          <p>{currentSurvey.body}</p>
+                          <blockquote>{currentSurvey.body}</blockquote>
                         </div>
                       </div>
                     </div>

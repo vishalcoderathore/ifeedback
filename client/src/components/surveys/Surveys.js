@@ -3,12 +3,16 @@ import { connect } from 'react-redux';
 
 import SurveyList from './SurveyList';
 import SurveyDetail from './SurveyDetail';
+import Preloader from '../Preloader';
 
 class Surveys extends React.Component {
-  state = {
-    showSurveyDetail: false,
-    surveyId: ''
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      showSurveyDetail: false,
+      surveyId: ''
+    };
+  }
 
   renderSurveyIntro() {
     return (
@@ -61,13 +65,21 @@ class Surveys extends React.Component {
     }
   }
 
+  renderContent() {
+    if (this.props.auth === null || this.props.surveys === null) {
+      return <Preloader />;
+    } else {
+      return (
+        <React.Fragment>
+          {this.renderSurveyIntro()}
+          {this.renderSurveys()}
+        </React.Fragment>
+      );
+    }
+  }
+
   render() {
-    return (
-      <React.Fragment>
-        {this.renderSurveyIntro()}
-        {this.renderSurveys()}
-      </React.Fragment>
-    );
+    return <React.Fragment>{this.renderContent()}</React.Fragment>;
   }
 }
 

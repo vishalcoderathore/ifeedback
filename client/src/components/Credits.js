@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Stripe from './Payments';
+import Preloader from './Preloader';
 
 class Credits extends React.Component {
   renderCredits() {
@@ -76,18 +77,26 @@ class Credits extends React.Component {
     );
   }
 
+  renderContent() {
+    if (this.props.auth === null) {
+      return <Preloader />;
+    } else {
+      return (
+        <React.Fragment>
+          {this.renderCreditsIntro()}
+          <section className='section'>
+            <div className='row'>
+              <div className='col s12 m8'>{this.renderQuickInfoCard()}</div>
+              <div className='col s12 m4'>{this.renderCreditsInfoCard()}</div>
+            </div>
+          </section>
+        </React.Fragment>
+      );
+    }
+  }
+
   render() {
-    return (
-      <React.Fragment>
-        {this.renderCreditsIntro()}
-        <section className='section section-recent'>
-          <div className='row'>
-            <div className='col s12 m8'>{this.renderQuickInfoCard()}</div>
-            <div className='col s12 m4'>{this.renderCreditsInfoCard()}</div>
-          </div>
-        </section>
-      </React.Fragment>
-    );
+    return <React.Fragment>{this.renderContent()}</React.Fragment>;
   }
 }
 

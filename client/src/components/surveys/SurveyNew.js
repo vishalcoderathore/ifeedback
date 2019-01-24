@@ -12,7 +12,10 @@ const headerMessageToFillForm = 'Please fill out the following entries';
 const headerMessageToReviewForm = 'Please review the following entries';
 
 class SurveyNew extends Component {
-  state = { showFormReview: false };
+  constructor(props) {
+    super(props);
+    this.state = { showFormReview: false };
+  }
 
   renderSurveyFormIntro() {
     return (

@@ -1,41 +1,53 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Preloader from './Preloader';
 
 class Dashboard extends React.Component {
   renderRecentSurveys() {
-    let recentPosts = [];
-    let surveyProps = this.props.surveys.reverse();
-    if (surveyProps.length > 0) {
-      let recentPostsLength = surveyProps.length <= 3 ? surveyProps.length : 3;
-      for (let i = 0; i < recentPostsLength; i++) {
-        let id = surveyProps[i]._id;
-        let obj = {
-          title: surveyProps[i].title,
-          dateSent: surveyProps[i].dateSent
-        };
-        recentPosts.push([id, obj]);
-      }
-      return recentPosts.map(item => {
-        return (
-          <tr key={item[0]}>
-            <td>{item[1].title}</td>
-            <td>{new Date(item[1].dateSent).toLocaleDateString()}</td>
-            <td>
-              <Link to='/surveys' className='btn purple lighten-1'>
-                Details
-              </Link>
-            </td>
-          </tr>
-        );
-      });
-    } else {
+    if (this.props.surveys === null) {
       return (
         <tr>
-          <td>No Surveys available</td>
+          <td>Loading...</td>
           <td />
         </tr>
       );
+    } else {
+      let recentPosts = [];
+      let surveyProps = this.props.surveys.reverse();
+
+      if (surveyProps.length > 0) {
+        let recentPostsLength =
+          surveyProps.length <= 3 ? surveyProps.length : 3;
+        for (let i = 0; i < recentPostsLength; i++) {
+          let id = surveyProps[i]._id;
+          let obj = {
+            title: surveyProps[i].title,
+            dateSent: surveyProps[i].dateSent
+          };
+          recentPosts.push([id, obj]);
+        }
+        return recentPosts.map(item => {
+          return (
+            <tr key={item[0]}>
+              <td>{item[1].title}</td>
+              <td>{new Date(item[1].dateSent).toLocaleDateString()}</td>
+              <td>
+                <Link to='/surveys' className='btn purple lighten-1'>
+                  Details
+                </Link>
+              </td>
+            </tr>
+          );
+        });
+      } else {
+        return (
+          <tr>
+            <td>No Surveys available</td>
+            <td />
+          </tr>
+        );
+      }
     }
   }
 
@@ -153,27 +165,34 @@ class Dashboard extends React.Component {
     );
   }
 
-  renderContent;
+  renderContent() {
+    if (this.props.auth === null || this.props.surveys === null) {
+      return <Preloader />;
+    } else {
+      return (
+        <React.Fragment>
+          {this.renderDashboardIntro()}
+          <section className='section '>
+            <div className='row'>
+              <div className='col s12 l8 m6'>
+                {this.renderRecentSurveysCard()}
+              </div>
+              <div className='col s12 m6 l4'>{this.renderQuickTodos()}</div>
+            </div>
+          </section>
+        </React.Fragment>
+      );
+    }
+  }
 
   render() {
-    return (
-      <React.Fragment>
-        {this.renderDashboardIntro()}
-        <section className='section '>
-          <div className='row'>
-            <div className='col s12 l8 m6'>
-              {this.renderRecentSurveysCard()}
-            </div>
-            <div className='col s12 m6 l4'>{this.renderQuickTodos()}</div>
-          </div>
-        </section>
-      </React.Fragment>
-    );
+    return <React.Fragment>{this.renderContent()}</React.Fragment>;
   }
 }
 
-function mapStateToProps({ surveys }) {
+function mapStateToProps({ auth, surveys }) {
   return {
+    auth,
     surveys
   };
 }

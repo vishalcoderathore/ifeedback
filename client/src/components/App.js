@@ -18,6 +18,7 @@ class App extends Component {
   componentDidMount() {
     this.props.fetchUser().then(() => {
       if (this.props.auth) {
+        console.log('auth verified in App.js');
         this.props.fetchSurveys();
       }
     });
@@ -40,7 +41,7 @@ class App extends Component {
   }
 
   renderActionButton() {
-    if (this.props.auth === true) return <ActionButton />;
+    if (this.props.auth) return <ActionButton />;
   }
 
   render() {

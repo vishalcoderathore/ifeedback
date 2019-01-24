@@ -4,12 +4,9 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 import HeaderLayout from './HeaderLayout';
-import Header from './HeaderLoggedIn';
-import HeaderFullScreeen from './HeaderFullScreeen';
 import Landing from './Landing';
 import Dashboard from './Dashboard';
 import SurveyNew from './surveys/SurveyNew';
-
 import Surveys from './surveys/Surveys';
 import ActionButton from './ActionButton';
 import Footer from './Footer';

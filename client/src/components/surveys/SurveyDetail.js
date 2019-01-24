@@ -4,6 +4,7 @@ import { truncate, truncateSync } from 'fs';
 
 const SurveyDetail = ({ onReturnClick, currentSurvey, currentUser }) => {
   function renderChart() {
+    console.log(currentSurvey);
     if (!currentSurvey.yes && !currentSurvey.no) {
       return (
         <React.Fragment>

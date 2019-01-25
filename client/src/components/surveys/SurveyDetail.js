@@ -4,7 +4,6 @@ import { truncate, truncateSync } from 'fs';
 
 const SurveyDetail = ({ onReturnClick, currentSurvey, currentUser }) => {
   function renderChart() {
-    console.log(currentSurvey);
     if (!currentSurvey.yes && !currentSurvey.no) {
       return (
         <React.Fragment>
@@ -44,58 +43,59 @@ const SurveyDetail = ({ onReturnClick, currentSurvey, currentUser }) => {
     }
   }
 
+  function renderSurveyDetailsCard() {
+    return (
+      <div className='card'>
+        <div className='card-content'>
+          <div className='row'>
+            <div className='col s12 m6'>
+              <span className='card-title'>Survey Details</span>
+            </div>
+            <div className='col s12 m6 center'>
+              <p>Posted By {currentUser}</p>
+              <p>On {new Date(currentSurvey.dateSent).toLocaleDateString()}</p>
+            </div>
+          </div>
+
+          <div className='row'>
+            <div className='col s12 m6'>
+              <div className='row'>
+                <div className='col s12'>
+                  <label>Survey Title</label>
+                  <blockquote>{currentSurvey.title}</blockquote>
+                </div>
+                <div className='col s12 pt-2'>
+                  <label>Survey Subject</label>
+                  <blockquote>{currentSurvey.subject}</blockquote>
+                </div>
+                <div className='col s12'>
+                  <label>Survey Body</label>
+                  <blockquote>{currentSurvey.body}</blockquote>
+                </div>
+              </div>
+            </div>
+            <div className='col s12 m6'>{renderChart()}</div>
+          </div>
+          <div className='card-action'>
+            <button
+              className='btn purple lighten-1'
+              onClick={e => {
+                onReturnClick();
+              }}>
+              Return
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <React.Fragment>
       <section className='section section-posts grey lighten-4'>
         <div className='container'>
           <div className='row'>
-            <div className='col s12'>
-              <div className='card'>
-                <div className='card-content'>
-                  <div className='row'>
-                    <div className='col s12 m6'>
-                      <span className='card-title'>Survey Details</span>
-                    </div>
-                    <div className='col s12 m6 center'>
-                      <p>Posted By {currentUser}</p>
-                      <p>
-                        On{' '}
-                        {new Date(currentSurvey.dateSent).toLocaleDateString()}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className='row'>
-                    <div className='col s12 m6'>
-                      <div className='row'>
-                        <div className='col s12'>
-                          <label>Survey Title</label>
-                          <blockquote>{currentSurvey.title}</blockquote>
-                        </div>
-                        <div className='col s12 pt-2'>
-                          <label>Survey Subject</label>
-                          <blockquote>{currentSurvey.subject}</blockquote>
-                        </div>
-                        <div className='col s12'>
-                          <label>Survey Body</label>
-                          <blockquote>{currentSurvey.body}</blockquote>
-                        </div>
-                      </div>
-                    </div>
-                    <div className='col s12 m6'>{renderChart()}</div>
-                  </div>
-                  <div className='card-action'>
-                    <button
-                      className='btn purple lighten-1'
-                      onClick={e => {
-                        onReturnClick();
-                      }}>
-                      Return
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div className='col s12'>{renderSurveyDetailsCard()}</div>
           </div>
         </div>
       </section>

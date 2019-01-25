@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Materialize from 'materialize-css/dist/js/materialize.min.js';
-import { realpathSync } from 'fs';
 
 class ActionButton extends React.Component {
   componentDidMount() {

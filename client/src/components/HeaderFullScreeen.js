@@ -55,22 +55,32 @@ class HeaderFullScreen extends Component {
                 className='responsive-img'
               />
             </div>
-            <h5>iFeedback</h5>
-            <p>Provide Feedback with a click of a button</p>
+            <a>
+              <span className='name white-text'>iFeedback Corp © 2019</span>
+            </a>
+            <a>
+              <span className='name white-text'>
+                Provide Feedback with a click of a button
+              </span>
+            </a>
+            <br />
           </div>
         </li>
         <li>
           <a href='#root' className='sidenav-close'>
+            <i className='sidenav-margin material-icons'>home</i>
             Home
           </a>
         </li>
         <li>
           <a href='#about' className='sidenav-close'>
+            <i className='sidenav-margin material-icons'>person</i>
             About
           </a>
         </li>
         <li>
           <a href='#contact' className='sidenav-close'>
+            <i className='sidenav-margin material-icons'>contact_phone</i>
             Contact
           </a>
         </li>
@@ -82,6 +92,9 @@ class HeaderFullScreen extends Component {
         </li>
         <li>
           <a href='#login-modal' className='modal-trigger'>
+            <i className='sidenav-margin material-icons purple-text'>
+              account_circle
+            </i>
             Sign In
           </a>
         </li>

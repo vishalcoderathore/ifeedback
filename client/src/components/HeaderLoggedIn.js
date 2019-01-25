@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Materialize from 'materialize-css/dist/js/materialize.min.js';
 
 class HeaderLoggedIn extends React.Component {
@@ -36,30 +37,45 @@ class HeaderLoggedIn extends React.Component {
     return (
       <React.Fragment>
         <li>
-          <div className='user-view primary-overlay'>
+          <div className='user-view'>
             <div className='background '>
               <img
-                src='/images/showcase.jpg'
+                src='/images/header-loggedin.jpeg'
                 alt=''
                 className='responsive-img'
               />
             </div>
-            <h5>iFeedback</h5>
-            <p>Provide Feedback with a click of a button</p>
+
+            <a>
+              <span className='name white-text'>iFeedback Corp © 2019</span>
+            </a>
+            <a>
+              <span className='name white-text'>
+                {this.props.auth.displayName}
+              </span>
+            </a>
+            <a>
+              <span className='email white-text'>
+                Credits: {this.props.auth.credits}
+              </span>
+            </a>
           </div>
         </li>
         <li>
           <Link to='/dashboard' className='sidenav-close'>
+            <i className='sidenav-margin material-icons'>dashboard</i>
             Dashboard
           </Link>
         </li>
         <li>
           <a href='/credits' className='sidenav-close'>
+            <i className='sidenav-margin material-icons'>attach_money</i>
             Credits
           </a>
         </li>
         <li>
           <Link to='/surveys' className='sidenav-close'>
+            <i className='sidenav-margin  material-icons'>email</i>
             Surveys
           </Link>
         </li>
@@ -67,10 +83,15 @@ class HeaderLoggedIn extends React.Component {
           <div className='divider' />
         </li>
         <li>
-          <a className='subheader'>Account</a>
+          <a className='subheader'>Account Controls</a>
         </li>
         <li>
-          <a href='/api/logout'>Logout</a>
+          <a href='/api/logout'>
+            <i className='sidenav-margin material-icons purple-text'>
+              account_circle
+            </i>
+            Logout
+          </a>
         </li>
       </React.Fragment>
     );
@@ -105,4 +126,10 @@ class HeaderLoggedIn extends React.Component {
   }
 }
 
-export default HeaderLoggedIn;
+function mapStateToProps({ auth }) {
+  return {
+    auth
+  };
+}
+
+export default connect(mapStateToProps)(HeaderLoggedIn);

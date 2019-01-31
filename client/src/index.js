@@ -11,6 +11,8 @@ import App, { history } from './routers/AppRouter.js';
 import reducers from './reducers';
 import { FETCH_USER, FETCH_SURVEYS } from './actions/types';
 
+import { fetchUser, fetchSurveys } from './actions/index';
+
 // Development only
 import axios from 'axios';
 window.axios = axios;
@@ -40,21 +42,22 @@ const renderApp = () => {
 /*
  * Check for existing user in axios request
  */
-axios.get('/api/current_user').then(res => {
+// axios.get('/api/current_user').then(res => {
+fetchUser().then(res => {
   /*
    * Updates Redux store (auth) to res.data if logged in or false if logged out
    */
-  store.dispatch({ type: FETCH_USER, payload: res.data });
+  store.dispatch({ type: FETCH_USER, payload: res });
 
-  if (res.data) {
+  if (res) {
     /*
      * Make call to load Surveys if logged in
      */
-    axios.get('/api/surveys').then(res => {
+    fetchSurveys().then(res => {
       /*
        * Updates Redux store (surveys) to surveys array
        */
-      store.dispatch({ type: FETCH_SURVEYS, payload: res.data });
+      store.dispatch({ type: FETCH_SURVEYS, payload: res });
       renderApp();
       if (history.location.pathname === '/') {
         history.push('/dashboard');

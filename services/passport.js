@@ -17,6 +17,7 @@ passport.deserializeUser((id, done) => {
     .catch(err => console.log(err));
 });
 
+// Google OAuth Strategy
 passport.use(
   new GoogleStrategy(
     {

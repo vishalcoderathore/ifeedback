@@ -48,11 +48,13 @@ class SurveyForm extends Component {
 // If validate returns empty object, no errors found
 function validate(values) {
   const errors = {};
-
+  const errorMessage = 'You must provide a value';
   errors.recipients = validateEmails(values.recipients || '');
   _.each(formFields, ({ name }) => {
     if (!values[name]) {
-      errors[name] = 'You must provide a value';
+      errors[name] = errorMessage;
+    } else if (values[name].trim().length === 0) {
+      errors[name] = errorMessage;
     }
   });
   return errors;

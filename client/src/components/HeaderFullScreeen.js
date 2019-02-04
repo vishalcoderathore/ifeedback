@@ -150,12 +150,7 @@ class HeaderFullScreen extends Component {
               <a
                 className='waves-effect waves-light btn social facebook'
                 id='facebook-link'
-                onClick={() =>
-                  alert(
-                    'Facebook Login is under construction. Log in using Google.'
-                  )
-                }
-                href='#'>
+                href='/auth/facebook'>
                 <i className='fa fa-facebook left' /> Sign in with facebook
               </a>
             </div>

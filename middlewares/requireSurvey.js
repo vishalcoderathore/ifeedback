@@ -4,7 +4,6 @@ module.exports = {
   validateBody: schema => {
     return (req, res, next) => {
       const result = Joi.validate(req.body, schema);
-      console.log(result);
       if (result.error) {
         return res.status(400).send({ error: 'Invalid Survey Form!' });
       }

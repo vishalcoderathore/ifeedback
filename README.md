@@ -30,6 +30,9 @@ App uses SendGrid API to create emails, Stripe API to mock payments which are re
 - Backend uses several middlewares as bodyParser and passport manage authentication.
 - App uses SendGrid API to send emails to customers. The API allows sending emails to multiple email addresses and allows reply functionality once a customer clicks on Yes/No option. This is useful for tracking Surveys. Users can not only send Surveys but also know how many responses have they recieved for a given Survey. For example if a user sends a Survey to 100 people to which 60 replied as Yes and 40 as No, User is able to get this information on the Survey Details page.
 - App uses StripePayment API to mock payments. This project is designed for learning purposes therefore No real payments are accepted. Stripe provides a test credit card number (4242 4242 4242 4242) to be used on the credits payments page. Once a user has enough credits, the user can now start sending Surveys. Each Survey costs 1 credit.
+- Authentication is supported by Passport.JS that uses the following Strategies
+  - Passport Google OAuth 2.0 : [View Documentation](http://www.passportjs.org/packages/passport-google-oauth20/ 'passport-google-oauth20')
+  - Passport Facebook : [View Documentation](http://www.passportjs.org/packages/passport-facebook/ 'passport-facebook')
 
 #### Front End
 
